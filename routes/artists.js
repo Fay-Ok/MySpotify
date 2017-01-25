@@ -14,10 +14,11 @@ var albumsInfo = {};
 
 router.get('/', function (req, res) {
 
-
     var firstFunction = function (url, callback) {
 
         request.get(url, function (err, response, body) {
+
+            console.log(body);
 
             if (err) {
 
@@ -29,14 +30,11 @@ router.get('/', function (req, res) {
 
             }
         }).end();
-
     };
-
 
     var secondFunction = function (id, callback) {
 
         var newRoute = albumUrl + id;
-
         firstFunction(newRoute, function (err, data) {
 
             albumsInfo[id] = {};
@@ -47,7 +45,10 @@ router.get('/', function (req, res) {
 
             callback();
         });
+
+
     };
+
 
     firstFunction(artistsURL, function (err, data) {
 
@@ -62,8 +63,6 @@ router.get('/', function (req, res) {
                 albumsInfo: albumsInfo
             });
         });
-
-
     });
 
 
