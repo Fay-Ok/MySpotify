@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/albums', albums);
-app.use('/artists', artists);
+app.use('/andreabocelli', artists);
 
 
 // catch 404 and forward to error handler
