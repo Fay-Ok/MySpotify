@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var http = require("https");
+var https = require("https");
 var async = require('async');
 var request = require('request');
-
+var albumController = require('./albumController');
 
 var AndreaBocelliID = '3EA9hVIzKfFiQI0Kikz2wo';
 var albumUrl = 'https://api.spotify.com/v1/albums/';
@@ -12,44 +12,11 @@ var albumIds = [];
 var albumsInfo = {};
 
 
+
 router.get('/', function (req, res) {
 
-    function firstFunction(url, callback) {
 
-        request.get(url, function (err, response, body) {
-
-
-            if (err) {
-
-                callback(err);
-
-            } else {
-
-                callback(null, body);
-
-            }
-        }).end();
-    };
-
-    function secondFunction(id, callback) {
-
-        var newRoute = albumUrl + id;
-        firstFunction(newRoute, function (err, data) {
-
-            albumsInfo[id] = {};
-            albumsInfo[id]['albumName'] = JSON.parse(data).name;
-            albumsInfo[id]['artistName'] = JSON.parse(data).artists[0].name;
-            albumsInfo[id]['releaseDate'] = JSON.parse(data).release_date;
-            albumsInfo[id]['image'] = JSON.parse(data).images[0].url;
-
-            callback();
-        });
-
-
-    };
-
-
-    firstFunction(artistsURL, function (err, data) {
+    albumController.get(artistsURL, function (err, data) {
 
         JSON.parse(data).items.reduce(function (curr, elem) {
             albumIds.push(elem.id);
@@ -66,5 +33,25 @@ router.get('/', function (req, res) {
 
 
 });
+
+
+function secondFunction(id, callback) {
+
+    var newRoute = albumUrl + id;
+
+    albumController.get(newRoute, function (err, data) {
+
+        albumsInfo[id] = {};
+        albumsInfo[id]['albumName'] = JSON.parse(data).name;
+        albumsInfo[id]['artistName'] = JSON.parse(data).artists[0].name;
+        albumsInfo[id]['releaseDate'] = JSON.parse(data).release_date;
+        albumsInfo[id]['image'] = JSON.parse(data).images[0].url;
+
+        callback();
+    });
+};
+
+var albumController = require('./albumController');
+
 
 module.exports = router;
