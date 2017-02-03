@@ -1,6 +1,6 @@
 var assert = require('assert');
 var describe = require("mocha");
-var getRoute = require('../routes/getRoute');
+var getRoute = require('../routes/getAlbumsIds');
 var http = require('http');
 var sinon = require('sinon');
 var mockery = require('mockery');
@@ -22,7 +22,7 @@ describe('HTTP', function () {
         http.request.restore();
     });
 
-    describe('get ', function () {
+    describe('getRoute ', function () {
 
         it('succeeds silently!', function () {
             getRoute.firstFunction(expectedUrl,callback);

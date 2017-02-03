@@ -1,19 +1,19 @@
 var request = require('request');
 var async = require('async');
+
 var albumIds = [];
 var albumsInfo = {};
 var albumUrl = 'https://api.spotify.com/v1/albums/';
 
-function getAlbum(url, callback) {
+function getArtistAlbums(url, callback) {
 
-    get(url, function (err, data) {
+    getAlbumsIds(url, function (err, data) {
 
         JSON.parse(data).items.reduce(function (curr, elem) {
             albumIds.push(elem.id);
         }, 0);
 
         async.map(albumIds, getAlbumInfo, function () {
-
             callback(null, albumsInfo);
         });
     });
@@ -23,7 +23,7 @@ function getAlbumInfo(id, callback) {
 
     var newRoute = albumUrl + id;
 
-    get(newRoute, function (err, data) {
+    getAlbumsIds(newRoute, function (err, data) {
 
         albumsInfo[id] = {};
         albumsInfo[id]['albumName'] = JSON.parse(data).name;
@@ -35,23 +35,22 @@ function getAlbumInfo(id, callback) {
     })
 };
 
-function get(url, callback) {
+function getAlbumsIds(url, callback) {
 
     request.get(url, function (err, response, body) {
 
         if (err) {
-
             callback(err);
 
         } else {
             callback(null, body);
 
         }
-    });
+    }).end();
 };
 
 module.exports = {
-    getAlbum: getAlbum,
+    getArtistAlbums: getArtistAlbums,
     getAlbumInfo: getAlbumInfo,
-    get: get
+    getAlbumsIds: getAlbumsIds
 };
