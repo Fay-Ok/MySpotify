@@ -1,0 +1,9 @@
+block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    each i in albumsInfo
+        p.title Album Name: #{i.albumName}
+        p.discribtion Artist: #{i.artistName}
+        p.discribtion Release Date: #{i.releaseDate}
+        img(src= i.image class="imgformat")
+
+
