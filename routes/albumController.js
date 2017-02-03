@@ -4,7 +4,6 @@ var albumIds = [];
 var albumsInfo = {};
 var albumUrl = 'https://api.spotify.com/v1/albums/';
 
-
 function getAlbum(url, callback) {
 
     get(url, function (err, data) {

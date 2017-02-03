@@ -12,20 +12,13 @@ var artistsURL = 'https://api.spotify.com/v1/artists/' + AndreaBocelliID + '/alb
 
 router.get('/', function (req, res) {
 
-    function get(url,callback) {
+        albumController.getAlbum(artistsURL, function (err, data) {
 
+            res.render('artists', {
+                albumsInfo: data
+            });
 
-    }
-
-    albumController.getAlbum(artistsURL, function (err, data) {
-
-        res.render('artists', {
-            albumsInfo: data
         });
-
-    });
-
-
 });
 
 
