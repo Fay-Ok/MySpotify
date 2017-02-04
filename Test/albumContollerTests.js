@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var expect = require('expect.js');
 
 
-describe('', function () {
+describe('buildAlbumApi', function () {
 
     var albumApi;
     var data = {
@@ -52,14 +52,11 @@ describe('', function () {
 
                 expect(typeof albumApi.albumsInfo[id]).to.equal("object");
                 expect(typeof expectedData).to.equal("object");
-
                 expect(albumApi.albumsInfo[id].albumName).to.equal(expectedData.albumName);
-                done();
             });
 
+            done();
 
         });
-
-
-    })
+    });
 });
