@@ -30,13 +30,11 @@ describe('buildAlbumApi', function () {
         sinon.stub(albumModel, 'getAlbumsIds', function (err, callback) {
             callback(null, JSON.stringify(data));
         });
-
         albumApi = albumController(albumModel);
+
     });
 
-
     describe('getAlbumInfo', function () {
-
         it('should create correct data object', function (done) {
 
             var expectedData = {
@@ -45,16 +43,14 @@ describe('buildAlbumApi', function () {
                 releaseDate: '2016-11-18',
                 image: 'https://i.scdn.co/image/a1088799d0f47c8909b836a03913e43699ca9fd6'
             };
-
             var id = '178R0jHx3EnQ5btUEkCBMb';
 
             albumApi.getAlbumInfo(id, function () {
 
                 expect(typeof albumApi.albumsInfo[id]).to.equal("object");
-                expect(typeof expectedData).to.equal("object");
                 expect(albumApi.albumsInfo[id].albumName).to.equal(expectedData.albumName);
-            });
 
+            });
             done();
 
         });

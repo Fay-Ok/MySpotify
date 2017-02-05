@@ -20,7 +20,6 @@ router.get('/', function (req, res) {
             var album = JSON.parse(str).name;
             var releaseDate = JSON.parse(str).release_date;
             res.render('album', {image: image, artistName: artistName, album: album, releaseDate: releaseDate});
-            console.log(image);
         });
 
         response.on('error', function (e) {
