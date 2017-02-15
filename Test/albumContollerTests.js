@@ -1,5 +1,5 @@
-var albumController = require('../routes/albumController');
-var albumModel = require('../routes/albumModel');
+var albumController = require('../controllers/albumController');
+var albumModel = require('../routes/sendGetRequest');
 var sinon = require('sinon');
 var expect = require('expect.js');
 
@@ -27,7 +27,7 @@ describe('buildAlbumApi', function () {
 
     beforeEach(function () {
 
-        sinon.stub(albumModel, 'getAlbumsIds', function (err, callback) {
+        sinon.stub(albumModel, 'getApiEndPoint', function (err, callback) {
             callback(null, JSON.stringify(data));
         });
         albumApi = albumController(albumModel);

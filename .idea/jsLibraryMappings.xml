@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{chai-DefinitelyTyped, chai-http-DefinitelyTyped, parse-DefinitelyTyped, sinon-DefinitelyTyped, sinon-chai-DefinitelyTyped, sinon-stub-promise-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{angular, angular-DefinitelyTyped, chai-DefinitelyTyped, chai-http-DefinitelyTyped, parse-DefinitelyTyped, sinon-DefinitelyTyped, sinon-chai-DefinitelyTyped, sinon-stub-promise-DefinitelyTyped}" />
     <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

@@ -1,8 +1,12 @@
-block content
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    p.title Album Name: #{albumName}
-    p.discribtion Artist: #{artistName}
-    p.discribtion Release Date: #{releaseDate}
-    img(src= image class="imgformat")
+extends layout
 
+block content
+    script(src="../controllers/angularController.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    div(ng-controller="artistsController")
+        //p.title Album Name: #{albumInfo.albumName}
+        //p.discribtion Artist: #{albumInfo.artistName}
+        //p.discribtion Release Date: #{albumInfo.releaseDate}
+        //img(src= albumInfo.image class="imgformat")
+        button(ng-click="artistsController.displayAlbumInfo()") Click here {{ helloo }}
 

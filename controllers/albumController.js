@@ -1,15 +1,15 @@
 var async = require('async');
-var albumModel = require('./albumModel');
+var sendGetRequest = require('./../routes/sendGetRequest');
 var albumIds = [];
 var albumsInfo = {};
 var albumUrl = 'https://api.spotify.com/v1/albums/';
 
 
-function buildAlbumApi(albumModel) {
+function buildAlbumApi(sendGetRequest) {
 
     function getArtistAlbums(url, callback) {
 
-        albumModel.getAlbumsIds(url, function (err, data) {
+        sendGetRequest.getApiEndPoint(url, function (err, data) {
 
             JSON.parse(data).items.reduce(function (curr, elem) {
                 albumIds.push(elem.id);
@@ -25,14 +25,15 @@ function buildAlbumApi(albumModel) {
 
         var newRoute = albumUrl + id;
 
-        albumModel.getAlbumsIds(newRoute, function (err, data) {
+        sendGetRequest.getApiEndPoint(newRoute, function (err, data) {
 
             albumsInfo[id] = {};
             albumsInfo[id]['albumName'] = JSON.parse(data).name;
             albumsInfo[id]['artistName'] = JSON.parse(data).artists[0].name;
             albumsInfo[id]['releaseDate'] = JSON.parse(data).release_date;
             albumsInfo[id]['image'] = JSON.parse(data).images[0].url;
-            callback();
+
+            callback(null, albumsInfo[id]);
         })
 
 

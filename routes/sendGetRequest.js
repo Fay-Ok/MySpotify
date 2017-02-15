@@ -1,6 +1,6 @@
 var request = require('request');
 
-function getAlbumsIds(url, callback) {
+function getApiEndPoint(url, callback) {
 
     request.get(url, function (err, response, body) {
 
@@ -18,5 +18,5 @@ function getAlbumsIds(url, callback) {
 };
 
 module.exports = {
-    getAlbumsIds: getAlbumsIds
+    getApiEndPoint: getApiEndPoint
 };
