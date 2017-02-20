@@ -5,8 +5,13 @@ var router = express.Router();
 
 
 module.exports.partials = function(req, res) {
+    console.log(req.params.name);
     res.render('partials/' + req.params.name);
 };
+
+
+
+
 // router.get('/', function(req, res, next) {
 //   res.render('index', { title: 'Express' });
 // });

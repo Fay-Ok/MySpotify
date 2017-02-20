@@ -9,6 +9,6 @@ app.config(['$routeProvider', function ($routeProvider) {
     }).otherwise({
         redirectTo: '/'
     });
-}]).config(['$locationProvider', function($locationProvider) {
+}]).config(['$locationProvider', function ($locationProvider) {
     $locationProvider.html5Mode(true);
 }]);

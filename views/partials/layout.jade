@@ -1,0 +1,12 @@
+doctype html
+html(ng-app="mySpotify")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" type="application/javascript")
+    body
+        div(ng-view)
+        block content
+        script(src="app/app.js",type="application/javascript")
+        script(src="app/controllers.js",type="application/javascript")
+        script(src="app/directives.js",type="application/javascript")
