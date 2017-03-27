@@ -1,5 +1,5 @@
-var controllers = angular.module('myapp.controllers', []);
-
-controllers.controller('IndexController', ['$scope', function($scope) {
-    $scope.message = 'Hello From Controller';
-}]);
+// var controllers = angular.module('myapp.controllers', []);
+//
+// controllers.controller('IndexController', ['$scope', function($scope) {
+//     $scope.message = 'Hello From Controller';
+// }]);
